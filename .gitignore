@@ -1,0 +1,19 @@
+# Rust
+target/
+debug/
+*.rs.bk
+# MSVC Windows builds of rustc generate these, which store debugging information
+*.pdb
+
+# Gleam
+build/
+*.beam
+*.ez
+/build
+erl_crash.dump
+
+#Exercism
+HINTS.md
+HELP.md
+.exercism/
+
