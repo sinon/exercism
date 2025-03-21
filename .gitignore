@@ -12,8 +12,19 @@ build/
 /build
 erl_crash.dump
 
+# Kotlin
+.gradle
+gradlew.bat
+gradlew
+gradle/
+**/src/test/kotlin/**
+build.gradle.kts
+settings.gradle.kts
+
+
 #Exercism
 HINTS.md
 HELP.md
+TUTORIAL.md
 .exercism/
 
