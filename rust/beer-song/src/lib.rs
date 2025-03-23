@@ -1,9 +1,28 @@
 pub fn verse(n: u32) -> String {
-    format!(
-        "{} bottles of beer on the wall, {} bottles of beer.\nTake one down and pass it around, {} bottles of beer on the wall.\n", n, n, n - 1
-     ).to_string()
+    match (n, n.saturating_sub(1)) {
+        (2, 1) => {
+            "2 bottles of beer on the wall, 2 bottles of beer.\nTake one down and pass it around, 1 bottle of beer on the wall.\n".to_string()
+        }
+        (1, 0) => "1 bottle of beer on the wall, 1 bottle of beer.
+Take it down and pass it around, no more bottles of beer on the wall.\n"
+            .to_string(),
+        (0, 0) => "No more bottles of beer on the wall, no more bottles of beer.
+Go to the store and buy some more, 99 bottles of beer on the wall.\n"
+            .to_string(),
+        (x, y) => {
+            format!("{} bottles of beer on the wall, {} bottles of beer.\nTake one down and pass it around, {} bottles of beer on the wall.\n", x, x, y)
+        }
+    }
 }
 
 pub fn sing(start: u32, end: u32) -> String {
-    unimplemented!("sing verses {} to {}, inclusive", start, end)
+    let mut out = "".to_string();
+    for i in (end..=start).rev() {
+        let v = verse(i);
+        out += &v;
+        if i != end {
+            out += "\n";
+        }
+    }
+    out
 }
