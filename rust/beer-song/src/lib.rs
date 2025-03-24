@@ -16,13 +16,9 @@ Go to the store and buy some more, 99 bottles of beer on the wall.\n"
 }
 
 pub fn sing(start: u32, end: u32) -> String {
-    let mut out = "".to_string();
-    for i in (end..=start).rev() {
-        let v = verse(i);
-        out += &v;
-        if i != end {
-            out += "\n";
-        }
-    }
-    out
+    (end..=start)
+        .rev()
+        .map(verse)
+        .collect::<Vec<_>>()
+        .join("\n")
 }
